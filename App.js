@@ -27,6 +27,7 @@ const App = () => {
   )
 }
 const InputScreen = ({navigation}) => {
+  const[ email , setemail]= useState("Malik");
   const [checked1, setChecked1] = useState(false);
   const [checked, setChecked] = useState('');
   const [open, setOpen] = useState(false);
@@ -69,15 +70,15 @@ const InputScreen = ({navigation}) => {
       <Text style={styles.textst }>Gender:         </Text>
 
       <RadioButton 
-        value="first"
-        status={ checked === 'first' ? 'checked' : 'unchecked' }
-        onPress={() => setChecked('first')}
+        value="Male"
+        status={ checked === 'Male' ? 'checked' : 'unchecked' }
+        onPress={() => setChecked('Male')}
       />
       <Text style={styles.textst }>Male</Text>
       <RadioButton 
-        value="second"
-        status={ checked === 'second' ? 'checked' : 'unchecked' }
-        onPress={() => setChecked('second')}
+        value="Female"
+        status={ checked === 'Female' ? 'checked' : 'unchecked' }
+        onPress={() => setChecked('Female')}
       />
       <Text style={styles.textst }>Female</Text>
       </View>
@@ -119,7 +120,7 @@ const InputScreen = ({navigation}) => {
       <TextInput style={styles.TInput1} multiline></TextInput>
       </View>
       <View style={{ justifyContent:'center', alignItems:'center' , alignSelf:'center' , padding:8 , color:'pink' , backgroundColor:'pink' }}>
-      <Button title='Submit' onPress={()=> navigation.navigate('DisplayScreen')}></Button>
+      <Button title='Submit' onPress={()=> navigation.navigate('DisplayScreen' , {Gender  : checked  })}></Button>
       </View>
     </View>
     
@@ -128,7 +129,7 @@ const InputScreen = ({navigation}) => {
 
 const DisplayScreen = ({navigation,route} )=>{
   return(
-    <Text> CONFIRM YOUR INPUT</Text>
+    <Text> Genders : {route.params.Gender }</Text>
   )
 }
 export default App

@@ -128,7 +128,7 @@ const InputScreen = ({navigation}) => {
       <View style={{ justifyContent:'center', alignItems:'center' , alignSelf:'center' , padding:8 , color:'pink' , backgroundColor:'pink' }}>
       <Button title='Submit' onPress={()=> navigation.navigate('DisplayScreen'
 
-       , {Gender  : checked  ,Address : text ,  Email : mail , Name : name  , Country : va , Subjects: checked1}  )}></Button>
+       , {Gender  : checked  ,Address : text ,  Email : mail , Name : name  , Country : value , Subjects: checked1}  )}></Button>
       </View>
     </View>
     

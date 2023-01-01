@@ -129,7 +129,7 @@ const InputScreen = ({navigation}) => {
 
 const DisplayScreen = ({navigation,route} )=>{
   return(
-    <Text> Genders : {route.params.Gender }</Text>
+    <Text> Gender  : {route.params.Gender }</Text>
   )
 }
 export default App

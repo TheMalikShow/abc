@@ -2,7 +2,7 @@ import { StyleSheet, Text, View ,Button} from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-
+import MultiSelect from 'react-native-multiple-select';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import {  TextInput, CheckBox  } from 'react-native';
@@ -27,29 +27,33 @@ const App = () => {
   )
 }
 const InputScreen = ({navigation}) => {
-  const[ email , setemail]= useState("Malik");
+
   const [checked1, setChecked1] = useState(false);
   const [checked, setChecked] = useState('');
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    {label: 'Pakistan', value: 'apple'},
+    {label: 'Pakistan', value: 'Pakistan'},
     {label: 'India', value: 'India'},
     {label: 'Afghanistan', value: 'Afghanistan'},
     {label: 'Srilanka', value: 'Srilanka'},
     {label: 'China', value: 'China'},
   ]);
+  const [mail,setmail] = useState();
+  const [name,setname]= useState();
+  const [text , settext] = useState();
+
   return (
   
     <View style={styles.container}>
         <Text style={{fontSize:30, fontWeight:'bold' , alignSelf:'center' , color:'pink' , shadowColor:'grey', shadowRadius:2 , textShadowColor:'grey',textShadowRadius:2, textDecorationColor:'red'}}>Input Screen </Text>
       <View style={{flexDirection:'row' , justifyContent:'center', alignItems:'center' , padding:3}}>
-      <Text style={styles.textst} dataDetectorType='email'>Email    </Text>
-      <TextInput style={styles.TInput}></TextInput>
+      <Text style={styles.textst}  > Email   </Text>
+      <TextInput style={styles.TInput} onChangeText={mail=>{setmail(mail)}}></TextInput>
       </View>
       <View style={{flexDirection:'row' , justifyContent:'center', alignItems:'center' , padding:3}}>
       <Text style={styles.textst}>Name   </Text>
-      <TextInput style={styles.TInput}></TextInput>
+      <TextInput style={styles.TInput} onChangeText={name=>{setname(name)}}></TextInput>
       
       </View>
       <View style={{flexDirection:'row' , justifyContent:'center', alignItems:'center' , padding:3 , marginLeft:33 , margin:20}}>
@@ -86,41 +90,45 @@ const InputScreen = ({navigation}) => {
       <View style={{flexDirection:'row' , justifyContent:'center', alignItems:'center' , padding:3}}>
       <Text style={styles.textst }>Subjects:</Text>
       <Checkbox
-      value="first"
-      status={checked1 === 'first' ? 'checked' : 'unchecked'}
+      value="Physics"
+      status={checked1 === 'Physics' ? 'checked' : 'unchecked'}
       onPress={() => {
-        setChecked1('first');
+        setChecked1('Physics');
       }}
     />
     <Text style={styles.textst }>Physics</Text>
     <Checkbox
-      value="second"
+      value="Chemistry"
       
-      status={checked1 === 'second' ? 'checked' : 'unchecked'}
+      status={checked1 === 'Chemistry' ? 'checked' : 'unchecked'}
       onPress={() => {
-        setChecked1('second');
+        setChecked1('Chemistry');
       }}
     />
     <Text style={styles.textst }>Chemistry</Text>
     <Checkbox
-      value="third"
-      status={checked1 === 'third' ? 'checked' : 'unchecked'}
+      value="Bio"
+      status={checked1 === 'Bio' ? 'checked' : 'unchecked'}
       onPress={() => {
-        setChecked1('third');
+        setChecked1('Bio');
       }}
     />
     <Text style={styles.textst }>Bio</Text>
+      
+       {/*SKILLS Section */}
       </View>
       <View style={{flexDirection:'row' , justifyContent:'center', alignItems:'center' , padding:3}}>
       <Text style={styles.textst }>Skills     </Text>
-      <TextInput style={styles.TInput1 } multiline></TextInput>
+      {/* <TextInput style={styles.TInput1 } multiline></TextInput> */}
       </View>
       <View style={{flexDirection:'row' , justifyContent:'center', alignItems:'center' , padding:3}}>
       <Text style={styles.textst }>Address</Text>
-      <TextInput style={styles.TInput1} multiline></TextInput>
+      <TextInput style={styles.TInput1} multiline onChangeText={text=>settext(text)}></TextInput>
       </View>
       <View style={{ justifyContent:'center', alignItems:'center' , alignSelf:'center' , padding:8 , color:'pink' , backgroundColor:'pink' }}>
-      <Button title='Submit' onPress={()=> navigation.navigate('DisplayScreen' , {Gender  : checked  })}></Button>
+      <Button title='Submit' onPress={()=> navigation.navigate('DisplayScreen'
+
+       , {Gender  : checked  ,Address : text ,  Email : mail , Name : name  , Country : va , Subjects: checked1}  )}></Button>
       </View>
     </View>
     
@@ -129,8 +137,16 @@ const InputScreen = ({navigation}) => {
 
 const DisplayScreen = ({navigation,route} )=>{
   return(
+    <>
     <Text> Gender  : {route.params.Gender }</Text>
-  )
+    <Text> Email  : {route.params.Email }</Text>
+    <Text> Name  : {route.params.Name }</Text>
+    <Text> Country  : {route.params.Country }</Text>
+    <Text> Subjects :{route.params.Subjects } </Text>
+    <Text> Skills : </Text>
+    <Text> Address : {route.params.Address}</Text>
+    <Button title='Submit ' onPress={()=>navigation.navigate('InputScreen')}> </Button>
+    </> )
 }
 export default App
 

@@ -145,7 +145,7 @@ const DisplayScreen = ({navigation,route} )=>{
     <Text> Country  : {route.params.Country }</Text>
     <Text> Gender  : {route.params.Gender }</Text>
     <Text> Subjects :{route.params.Subjects } </Text>
-    <Text> Skills : </Text>
+    <Text> Skills : {route.params.Address}</Text>
     <Text> Address : {route.params.Address}</Text>
     <Button title='Submit ' onPress={()=>navigation.navigate('InputScreen')}> </Button>
     </> )

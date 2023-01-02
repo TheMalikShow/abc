@@ -48,7 +48,7 @@ const InputScreen = ({navigation}) => {
     <View style={styles.container}>
         <Text style={{fontSize:30, fontWeight:'bold' , alignSelf:'center' , color:'pink' , shadowColor:'grey', shadowRadius:2 , textShadowColor:'grey',textShadowRadius:2, textDecorationColor:'red'}}>Input Screen </Text>
       <View style={{flexDirection:'row' , justifyContent:'center', alignItems:'center' , padding:3}}>
-      <Text style={styles.textst}  > Email   </Text>
+      <Text style={styles.textst} dataDetectorType='email'> Email   </Text>
       <TextInput style={styles.TInput} onChangeText={mail=>{setmail(mail)}}></TextInput>
       </View>
       <View style={{flexDirection:'row' , justifyContent:'center', alignItems:'center' , padding:3}}>
@@ -138,10 +138,12 @@ const InputScreen = ({navigation}) => {
 const DisplayScreen = ({navigation,route} )=>{
   return(
     <>
-    <Text> Gender  : {route.params.Gender }</Text>
+    
     <Text> Email  : {route.params.Email }</Text>
     <Text> Name  : {route.params.Name }</Text>
+    
     <Text> Country  : {route.params.Country }</Text>
+    <Text> Gender  : {route.params.Gender }</Text>
     <Text> Subjects :{route.params.Subjects } </Text>
     <Text> Skills : </Text>
     <Text> Address : {route.params.Address}</Text>

@@ -118,11 +118,11 @@ const InputScreen = ({navigation}) => {
        {/*SKILLS Section */}
       </View>
       <View style={{flexDirection:'row' , justifyContent:'center', alignItems:'center' , padding:3}}>
-      <Text style={styles.textst }>Skills     </Text>
+      <Text style={styles.textst }>Skills     :</Text>
       {/* <TextInput style={styles.TInput1 } multiline></TextInput> */}
       </View>
       <View style={{flexDirection:'row' , justifyContent:'center', alignItems:'center' , padding:3}}>
-      <Text style={styles.textst }>Address</Text>
+      <Text style={styles.textst }>Address : </Text>
       <TextInput style={styles.TInput1} multiline onChangeText={text=>settext(text)}></TextInput>
       </View>
       <View style={{ justifyContent:'center', alignItems:'center' , alignSelf:'center' , padding:8 , color:'pink' , backgroundColor:'pink' }}>
